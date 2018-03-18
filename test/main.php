@@ -1,8 +1,8 @@
 <?php
 	date_default_timezone_set("Asia/Shanghai");
 	$str1=date("md_His");
-	mkdir('/data1/www/htdocs/240/ltr970503/1/test/upload/'.$str1);
-	mkdir("/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/img/");
+	mkdir('/Users/chandler/text/'.$str1);
+	mkdir("/Users/chandler/text/$str1/img/");
 	
 
 	if($_FILES["file"]["size"] < 12079595)
@@ -23,15 +23,15 @@
     echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
 
 
-    if (file_exists("/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/img/" . $_FILES["file"]["name"]))
+    if (file_exists("/Users/chandler/text/$str1/img/" . $_FILES["file"]["name"]))
       {
       echo $_FILES["file"]["name"] . " already exists. ". "<br />";
       }
     else
       {
       move_uploaded_file($_FILES["file"]["tmp_name"],
-      "/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/img/" . $_FILES["file"]["name"]);
-      echo "Stored in: " . "/upload/$str1/img/" . $_FILES["file"]["name"] . "<br />";
+      "/Users/chandler/text/$str1/img/" . $_FILES["file"]["name"]);
+      echo "Stored in: " . "/Users/chandler/text/$str1/img/" . $_FILES["file"]["name"] . "<br />";
       }
     }
   }
@@ -41,7 +41,7 @@ else
   }
 
 require_once("decoder.php");
-decrypt_elimg("/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/img/$str1.img","/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/");
+decrypt_elimg("/Users/chandler/text/$str1/img/$str1.img","/Users/chandler/text/$str1/");
 
     
 function list_dir($dir){
@@ -63,8 +63,8 @@ function list_dir($dir){
     	return $result;
     }
 
-$datalist=list_dir("/data1/www/htdocs/240/ltr970503/1/test/upload/$str1/");
-$filename = "/data1/www/htdocs/240/ltr970503/1/test/upload/$str1.zip";    
+$datalist = list_dir("/Users/chandler/text/$str1/");
+$filename = "/Users/chandler/text/$str1.zip";    
 
 if(!file_exists($filename)){      
     $zip = new ZipArchive();   
@@ -77,4 +77,21 @@ if(!file_exists($filename)){
         }   
     }   
     $zip->close();   
-}   
+}
+
+$pathToFile = '/Users/chandler/text/0318_183302.zip';//文件绝对路径
+$downloadName = '0318_183302.zip';//下载后的文件名
+ //输入文件标签
+ Header("Cache-Control: must-revalidate, post-check = 0, pre-check = 0");
+ Header("Content-type: application/octet-stream");
+ Header("Content-type: application/foece-download");
+ Header("Content-type: application/download");
+ Header("Accept-Ranges: bytes");
+ Header("Accept-Length: " . filesize($pathToFile));
+ Header("Content-Disposition: filename=" . $downloadName);
+
+ //输出文件内容
+ $file = fopen($pathToFile, "r");
+ echo fread($file, filesize($pathToFile));
+ fclose($file);
+ ?>
