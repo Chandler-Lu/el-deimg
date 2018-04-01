@@ -1,10 +1,23 @@
 <?php
+//ob_start();
 date_default_timezone_set("Asia/Shanghai");
 //以上传时间命名新文件夹
-$str1=date("md_His");
-mkdir('/Users/chandler/Downloads/text/'.$str1);
+function getRandChar($length){
+     $str = null;
+     $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";//大小写字母以及数字
+     $max = strlen($strPol)-1;
+     
+     for($i=0;$i<$length;$i++){
+            $str.=$strPol[rand(0,$max)];
+     }
+     return $str;
+}
+$str0="el_";
+$str1=$str0.getRandChar(6);
+$str2=date("md_His");
+mkdir($str1);
 //在该文件夹下创建以img命名的新文件夹
-mkdir("/Users/chandler/Downloads/text/$str1/img/");
+mkdir("$str1/img/");
 	
 //上传、并将上传文件重名名于所属文件夹同名
 if($_FILES["file"]["size"] < 12079595) {
@@ -18,11 +31,11 @@ if($_FILES["file"]["size"] < 12079595) {
     	 echo "Type: " . $_FILES["file"]["type"] . "<br />";
     	 echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
     	 echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-	if (file_exists("/Users/chandler/Downloads/text/$str1/img/" . $_FILES["file"]["name"])) {
+	if (file_exists("$str1/img/" . $_FILES["file"]["name"])) {
 		echo $_FILES["file"]["name"] . " already exists. ". "<br />";
 	} else {
-		move_uploaded_file($_FILES["file"]["tmp_name"],"/Users/chandler/Downloads/text/$str1/img/" . $_FILES["file"]["name"]);
-		echo "Stored in: " . "/Users/chandler/Downloads/text/$str1/img/" . $_FILES["file"]["name"] . "<br />";
+		move_uploaded_file($_FILES["file"]["tmp_name"],"$str1/img/" . $_FILES["file"]["name"]);
+		echo "Stored in: " . "$str1/img/" . $_FILES["file"]["name"] . "<br />";
 	}
 	}
 }
@@ -32,7 +45,7 @@ else {
 
 //解密调用
 require_once("decoder.php");
-decrypt_elimg("/Users/chandler/Downloads/text/$str1.img","/Users/chandler/Downloads/text/");
+decrypt_elimg("$str1/img/$str1.img","$str1/");
 
 function list_dir($dir){
     	$result = array();
@@ -53,8 +66,8 @@ function list_dir($dir){
     	return $result;
 }
 
-$datalist=list_dir("/Users/chandler/Downloads/text/$str1/");
-$filename = "/Users/chandler/Downloads/text/$str1.zip";    
+$datalist=list_dir("$str1/");
+$filename = "$str1.zip";
 
 if(!file_exists($filename)){      
     $zip = new ZipArchive();   
@@ -67,4 +80,8 @@ if(!file_exists($filename)){
         }   
     }   
     $zip->close();   
-}   
+}
+echo "</br><h1>HI，这是一份新出炉的音色文件，出炉时间：$str2 , 祝练琴愉快～<h1>";
+echo "<h1>点击下载吧 -> <a href=".$str1.".zip>Download</a><h1>";
+
+?>

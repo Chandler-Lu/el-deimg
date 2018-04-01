@@ -21,7 +21,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. **/
 
-
 // Predfine Section
 define('MAX_TRACK', 84);
 define('MAX_HEADER', 2);
@@ -215,7 +214,7 @@ class ElectoneFat12 {
                 $this->extraAll($this->getDirTable($firstCluster),$targetDir);
             } else {
                 // Extract file to targetdir
-                echo "$targetDir/$name\n";
+                echo "$name\n";
 		$wfh = fopen("$targetDir/$name","wb");
                 $decContent=$this->getFileContent($firstCluter,$size);
                 fwrite($wfh,$decContent);
