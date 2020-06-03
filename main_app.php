@@ -23,7 +23,7 @@
     <div class="inner">
       <h3 class="masthead-brand">EL双排键解密工具</h3>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="http://www.cndzq.com/bbs/">返回电子琴在线论坛</a>
+	  <a class="nav-link active" href="http://www.cndzq.com/bbs/xcx/">返回<span style="color:#d74c3f">第一键盘</span></a>
       </nav>
     </div>
   </header>
@@ -134,21 +134,20 @@ echo "<p>点击下载吧 -></p><p> <a class='btn btn-lg btn-secondary' href=" . 
 ?>
 
 </main>
-<div style="text-align:center;">
-        <p><a href="https://www.cndzq.com/bbs/thread-408445-1-1.html">点击这里，体验<span style="color:#d74c3f">第一键盘</span>APP</a></p>
-        <p><img src="img/qr.png" width="100" height="100" /></p>
+	<div style="text-align:center;">
+        <p><img src="img/icon.png" width="100" height="100" /></p>
   </div>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>项目最新修改时间：2019-11-06 10:16:04</p>
-      <p>2019 cndzq.com</p>
+      <p>项目最新修改时间：2020-03-29 10:52:04</p>
+      <p>2019 cndzq.com·第一键盘</p>
     </div>
   </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script
+<script src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
  //触发隐藏的file表单
  function makeThisfile(){
