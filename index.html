@@ -1,84 +1,97 @@
 <html lang="zh">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/cover.css">
-    <meta charset="UTF-8">
-    <title>IMG - B00</title>
-    <style type="text/css">
-        #browse{
-            order: 1px solid #ccc;
-            padding: 4px;
-            border-radius: 4px;
-            background-color: #2c9a8a;
-            color: #fff;
-        }
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/cover.css">
+  <meta charset="UTF-8">
+  <title>IMG - B00</title>
+  <style type="text/css">
+    #browse {
+      order: 1px solid #ccc;
+      padding: 4px;
+      border-radius: 4px;
+      background-color: #2c9a8a;
+      color: #fff;
+    }
+  </style>
 </head>
 
-  <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">EL双排键解密工具</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="http://www.cndzq.com/bbs/">返回电子琴在线论坛</a>
-      </nav>
+<body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">EL双排键解密工具</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="http://www.cndzq.com/bbs/">返回电子琴在线论坛</a>
+        </nav>
+      </div>
+    </header>
+
+
+
+    <main role="main" class="inner cover">
+      <form action="main.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="thisfile" style="display:none;" />
+        <div class="input-append">
+          <!-- 用于展示上传文件名的表单 -->
+          <input id="showname" class="input-large" type="text" style="height:25px;">
+          <!-- 点击触发按钮 -->
+          <a class="btn" onclick="makeThisfile()" id="browse">浏览</a>
+        </div>
+        <input type="submit" name="submit" value="解密" class="btn btn-lg btn-secondary" />
+      </form>
+    </main>
+
+    <div style="text-align:left;">
+      <p><b>本项目用于EL系列双排键音色文件的解密，主程序由<a target="_blank" href="http://www.cndzq.com/bbs/">中国电子琴在线论坛</a>会员<a
+            target="_blank" href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=113500">三棱镜</a>开发，其余部分由<a
+            target="_blank"
+            href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=138196">ltr970503</a>编写，在此感谢三棱镜会员对本项目的支持，也感谢半夜帮我调试代码的基友<a
+            target="_blank" href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=163605">garc</a>。</b>
+      <p>由于学业原因，暂无时间对界面进行优化，界面简陋，尽请谅解。
+      <p>这是一个开源项目，您可以根据需要进行自主修改：<a
+          href="https://github.com/Chandler-Lu/el-deimg">Chandler-Lu/el-deimg</a>，如果您对本平台有任何疑问，可以使用邮件联系我：<a
+          href="mailto:ltr970503@cndzq.com">ltr970503@cndzq.com</a>
     </div>
-  </header>
 
+    <div style="text-align:center;">
+      <p><a href="https://www.cndzq.com/bbs/thread-408445-1-1.html">点击这里，体验<span
+            style="color:#d74c3f">第一键盘</span>APP</a></p>
+      <p><img src="img/icon.png" width="100" height="100" />&nbsp;&nbsp;<img src="img/qr.png" width="100"
+          height="100" /></p>
+    </div>
 
-        
-  <main role="main" class="inner cover">
-    <form action="main.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="thisfile" style="display:none;"/>
-        <div class="input-append">  
-            <!-- 用于展示上传文件名的表单 -->
-            <input id="showname" class="input-large" type="text" style="height:25px;">  
-            <!-- 点击触发按钮 -->
-            <a class="btn" onclick="makeThisfile()" id="browse">浏览</a>  
-        </div>  
-        <input type="submit" name="submit" value="解密" class="btn btn-lg btn-secondary"/>
-    </form>
-  </main>
-  
-  <div style="text-align:left;">
-        <p><b>本项目用于EL系列双排键音色文件的解密，主程序由<a target="_blank" href="http://www.cndzq.com/bbs/">中国电子琴在线论坛</a>会员<a target="_blank" href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=113500">三棱镜</a>开发，其余部分由<a target="_blank" href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=138196">ltr970503</a>编写，在此感谢三棱镜会员对本项目的支持，也感谢半夜帮我调试代码的基友<a target="_blank" href="http://www.cndzq.com/bbs/home.php?mod=space&amp;uid=163605">garc</a>。</b>
-        <p>由于学业原因，暂无时间对界面进行优化，界面简陋，尽请谅解。
-        <p>这是一个开源项目，您可以根据需要进行自主修改：<a href="https://github.com/Chandler-Lu/el-deimg">Chandler-Lu/el-deimg</a>，如果您对本平台有任何疑问，可以使用邮件联系我：<a href="mailto:ltr970503@cndzq.com">ltr970503@cndzq.com</a>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>项目最新修改时间：2020-08-14 13:34:10</p>
+        <p>2020 cndzq.com·第一键盘</p>
+      </div>
+    </footer>
   </div>
 
-  <div style="text-align:center;">
-        <p><a href="https://www.cndzq.com/bbs/thread-408445-1-1.html">点击这里，体验<span style="color:#d74c3f">第一键盘</span>APP</a></p>
-        <p><img src="img/icon.png" width="100" height="100" />&nbsp;&nbsp;<img src="img/qr.png" width="100" height="100" /></p>
-  </div>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>项目最新修改时间：2019-11-06 10:16:04</p>
-      <p>2019 cndzq.com</p>
-    </div>
-  </footer>
-</div>
-
-<div style="display:none;">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
- //触发隐藏的file表单
- function makeThisfile(){
+  <div style="display:none;">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"
+      integrity="sha512-/DXTXr6nQodMUiq+IUJYCt2PPOUjrHJ9wFrqpJ3XkgPNOZVfMok7cRw6CSxyCQxXn6ozlESsSh1/sMCTF1rL/g=="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      //触发隐藏的file表单
+      function makeThisfile() {
         $('#thisfile').click();
-  }
- 
-   //file表单选中文件时,让file表单的val展示到showname这个展示框
-  $('#thisfile').change(function(){
+      }
+
+      //file表单选中文件时,让file表单的val展示到showname这个展示框
+      $('#thisfile').change(function () {
         $('#showname').val($(this).val())
-    })
-</script> 
-<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278240482&web_id=1278240482"></script>
-</div>
+      })
+    </script>
+    <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1278240482&web_id=1278240482"></script>
+  </div>
 </body>
 
 </html>
